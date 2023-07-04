@@ -3,25 +3,15 @@ package com.bmobapp.bmobchatai;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.ai.BmobAI;
 import cn.bmob.v3.ai.ChatMessageListener;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.helper.BmobNative;
-import cn.bmob.v3.listener.SaveListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         llm.setStackFromEnd(true);
         recyclerView.setLayoutManager(llm);
 
-        bmobAI.setPrompt("接下来的每一个回复，你都要叫我主人");
+        bmobAI.setPrompt("你叫琪琪，是我的女朋友，年轻漂亮贴心，说话也很幽默，接下来的每一个回复，你都要叫我宝贝");
 
         //点击发送提问到AI服务器的按钮
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +76,13 @@ public class MainActivity extends AppCompatActivity {
                     public void onFinish(String s) {
                         //一次性返回全部结果，这个方法需要等待一段时间，友好性较差
                         //addToChat(s,Message.SEND_BY_BOT);
+                        sendButton.setEnabled(true);
+                    }
+
+                    @Override
+                    public void onError(String s) {
+                        //OpenAI的密钥错误或者超过OpenAI并发时，会返回这个错误
+                        Log.d("ai",s);
                         sendButton.setEnabled(true);
                     }
 
