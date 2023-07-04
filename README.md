@@ -31,6 +31,13 @@ bmobAI.Chat(quesion, "test_user",new ChatMessageListener() {
         //连接关闭了
         Log.d("ai","close");
     }
+
+    @Override
+    public void onError(String s) {
+        //OpenAI的密钥错误或者超过OpenAI并发时，会返回这个错误
+        Log.d("ai",s);
+        sendButton.setEnabled(true);
+    }
 });
 ```
 
