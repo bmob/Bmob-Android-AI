@@ -53,11 +53,16 @@ public class MainActivity extends AppCompatActivity {
         llm.setStackFromEnd(true);
         recyclerView.setLayoutManager(llm);
 
+        bmobAI.setPrompt("接下来的每一个回复，你都要叫我主人");
+
         //点击发送提问到AI服务器的按钮
         sendButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
+                sendButton.setEnabled(false);
+
                 //获取问题
                 String quesion = messageEditText.getText().toString().trim();
                 if(quesion.isEmpty() || quesion.trim()=="")
@@ -81,12 +86,14 @@ public class MainActivity extends AppCompatActivity {
                     public void onFinish(String s) {
                         //一次性返回全部结果，这个方法需要等待一段时间，友好性较差
                         //addToChat(s,Message.SEND_BY_BOT);
+                        sendButton.setEnabled(true);
                     }
 
                     @Override
                     public void onClose() {
                         //连接关闭了
                         Log.d("ai","close");
+                        sendButton.setEnabled(true);
                     }
                 });
             }
