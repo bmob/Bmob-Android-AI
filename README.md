@@ -37,5 +37,5 @@ bmobAI.Chat(quesion, "test_user",new ChatMessageListener() {
 ## 设置prompt
 
 ```java
-bmobAI.setPrompt("在请求AI前调用");
+bmobAI.setPrompt("接下来的每一个回复，你都要叫我主人");
 ```
