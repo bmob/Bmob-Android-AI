@@ -13,6 +13,12 @@ V3.9.1
 
 ![](introduce.jpg)
 
+## 如何配置
+
+参考Bmob Android快速入门
+
+http://doc.bmobapp.com/data/android/index.html
+
 
 ## 创建AI类
 ```java
