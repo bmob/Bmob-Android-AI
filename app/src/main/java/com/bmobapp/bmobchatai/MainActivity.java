@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     EditText messageEditText;
-    ImageButton sendButton;
+    Button sendButton;
 
     List<Message> messageList;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Bmob AI示例");
         //创建Bmob AI实例
         bmobAI = new BmobAI();
         //初始化AI内容问答存储
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                sendButton.setEnabled(false);
+                //sendButton.setEnabled(false);
 
                 //获取问题
                 String quesion = messageEditText.getText().toString().trim();
